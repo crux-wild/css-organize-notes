@@ -1,4 +1,4 @@
-# google HTML/CSS 编码规范
+# Google HTML/CSS 编码规范
 
 ## 通用规范
 
@@ -38,5 +38,65 @@
   background: url(/images/example);
 }
 ```
+---
 
-### 通用书写规范
+
+## 通用书写格式
+
+### 缩进
+
+**使用两个空格替换缩进**
+
+避免使用制表符(tab)或者制表符和空格混用方式作为缩进。
+
+### 字母大小写
+
+**统一使用小写**
+
+HTML和CSS的符号统一使用小写：包括HTML的标签和属性以及属性数值，CSS的选择符和属性
+性值。
+
+```css
+<!-- 不推荐写法 -->
+<A HREF="/">HOME</A>
+
+<!-- 推荐写法 -->
+<img src="google.png" alt="Google">
+
+/** 不推荐写法 **/
+color: #E5E5E5;
+
+/** 推荐写法 **/
+color: #e5e5e5;
+```
+
+### 行末空格
+
+**去掉行末不用的空格**
+
+去掉行末的空格，可以避免diff比较时候的困扰。
+
+### EditorConfig
+
+上述书写规范通过.editorconfig文件和编辑器插件的方式自动化的完成。
+
+```.editorconfig
+# http://editorconfig.org
+
+root = true
+
+[*.{css, html}]
+charset = utf-8
+end_of_line = lf
+indent_size = 2
+indent_style = space
+insert_final_newline = true
+max_line_length = 80
+trim_trailing_whitespace = true
+```
+
+(EditorConfig)[http://editorconfig.org]
+
+---
+
+
