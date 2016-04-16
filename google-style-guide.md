@@ -95,7 +95,7 @@ max_line_length = 80
 trim_trailing_whitespace = true
 ```
 
-(EditorConfig)[http://editorconfig.org]
+[EditorConfig 官网](http://editorconfig.org)
 
 ---
 
