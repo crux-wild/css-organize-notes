@@ -19,7 +19,7 @@
 > 其中一个由另一个生成。
 >
 > 省略协议部分，将单个HTML页面所包含的所有内嵌资源的加载协议，统一为当前HTML页面
-> 的协议，并由其统一生成内嵌资源的加载协议。
+> 的协议，并由其统一生成其内嵌资源的加载协议。
 
 ```css
 <!-- 不推荐写法 -->
@@ -74,11 +74,11 @@ color: #e5e5e5;
 
 **去掉行末不用的空格**
 
-去掉行末的空格，可以避免diff比较时候的困扰。
+去掉行末的空格，可以避免`diffs`比较时候的困扰。
 
 ### EditorConfig
 
-上述书写规范通过.editorconfig文件和编辑器插件的方式自动化的完成。
+通过`.editorconfig`文件和编辑器插件的方式，上述书写规范可以自动化进行。
 
 ```.editorconfig
 # http://editorconfig.org
@@ -95,8 +95,47 @@ max_line_length = 80
 trim_trailing_whitespace = true
 ```
 
-[EditorConfig 官网](http://editorconfig.org)
+**EditorConfig 官网**  <http://editorconfig.org)>
 
 ---
 
+## 通用Meta书写规则
 
+### 编码
+
+**使用UTF-8编码**
+
+确保你所使用的文本编辑器使用的是UTF-8编码，而不是单纯的字节组合。
+通过`<metacharset="utf-8">`指定HTML所使用的编码。
+
+样式表可以通过`@charset "UTF-8"`或者是HTTP headers两种方式显式的指定编码。
+如果样式表中的内容没有超出ASNII编码的范围，不必显示指定样式表的编码。
+
+**编码和指定编码相关内容** <https://www.w3.org/International/tutorials/tutorial-
+char-enc/#quicksummary>
+
+### 注释
+
+**在代码片段需要特殊说明的时候，使用注释**
+
+使用注释说明代码：代码的功能，代码所希望达到的目标，使用的解决方案以及其优势。
+(是否需要注释取决于项目需要，而不是注释每一行代码。应该视项目复杂性和代码修改频
+率而定)
+
+### 待完成项
+
+**通过TODO来提示这是一个待完成项。**
+
+TODO后面的括号可以用来提示联系人信息(用户名或者是邮件列表)，`TODO(contact)`
+
+TODO后面冒号是待完成的具体事项，`TODO: 待完成项`
+
+```html
+<!-- TODO: 移除任意个标签 -->
+<ul>
+  <li>Apples</li>
+  <li>Oranges</li>
+</ul>
+```
+
+---
