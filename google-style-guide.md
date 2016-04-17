@@ -386,7 +386,7 @@ The currency symbol for the Euro is “€”.
 
 ### 资源类型属性
 
-**`javascript`和`css`资源的类型省略不写**
+**`javascript`和`css`资源类型省略不写**
 
 样式表和脚本在`HTML5`标准中把`text/css`和`text/javascript`作为二者属性的默认值。
 这个规则在旧版本浏览器中也成立。
