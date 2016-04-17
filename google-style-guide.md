@@ -126,9 +126,9 @@ char-enc/#quicksummary>
 
 **通过TODO来提示这是一个待完成项。**
 
-TODO后面的括号可以用来提示联系人信息(用户名或者是邮件列表)，`TODO(contact)`
+TODO后面的括号可以用来提示联系人信息(用户名或者是邮件列表)，例：`TODO(contact)`。
 
-TODO后面冒号是待完成的具体事项，`TODO: 待完成项`
+TODO后面冒号是待完成的具体事项。例：`TODO: 待完成项`。
 
 ```html
 <!-- TODO: 移除任意个标签 -->
@@ -139,3 +139,47 @@ TODO后面冒号是待完成的具体事项，`TODO: 待完成项`
 ```
 
 ---
+
+## HTML书写规范
+
+### 文档申明
+
+**使用HTML5的文档申明**
+
+对于HTML文档来说更推荐使用HTML5的文档申明(<!DOCTYPE html>)。
+
+(推荐将HTML文档的`Content-Type`设置为`text/html`，而不是`application/xhtml+xml`
+。后者缺乏浏览器的支持，与HTML文档相比语法上更为僵化。)
+
+常见的情况是，未闭合标签(<br>)在XHTML文档中是不被允许的。
+
+### HTML内容检验
+
+**HTML内容尽量合乎语法**
+
+语法不正确的HTML文档，解析的时候会需要额外的容错处理，会降低解析过程的效率。
+
+HTML内容是否存在语法错误，是评价HTML代码质量的重要标注。语法正确代码内容可以避免
+一些意象不到错误。
+
+> HTML遵循的是"对输入宽容"的原则，即使接受的HTML文档不是很规范，HTML解析器也可以
+> 尽量理解其中的意义。但是，HTML的容错算法对绝大多数用户来说，都是不透明的。带来
+> 问题是经过容错处理的HTML解析结果可能很难被我们所理解。为了避免这样的问题，应该
+> 提早对HTML文档就行语法校验的工作。
+
+```html
+<!-- 不推荐写法 -->
+<title>Test</title>
+<article>This is only a test.
+
+<!-- 推荐写法 -->
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Test</title>
+<article>This is only a test.</article>
+```
+
+### 语义化
+
+**使用HTML标签的时候应该语义化**
+
