@@ -412,3 +412,57 @@ The currency symbol for the Euro is “€”.
 
 ### 通用格式规则
 
+**每个独立的`blockquote`，`ul`，`table`都应该使用空行作为分割。每个子元素相对其父
+亲都应该有缩进**
+
+```html
+<blockquote>
+  <p><em>Space</em>, the final frontier</p>
+</blockquote>
+
+<ul>
+  <li>Moe</li>
+  <li>Larry</li>
+  <li>Curly</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Income</th>
+      <th scope="col">Taxes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>$ 5.00</td>
+      <td>$ 4.50</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+### HTML标签的引号
+
+**标签中的属性统一使用双引号(`""`)**
+
+```html
+<!-- 不推荐写法 -->
+<a class='maia-button maia-button-secondary'>Sign in</a>
+
+<!-- 推荐写法 -->
+<a class="maia-button maia-button-secondary">Sign in</a>
+```
+
+`.htmlhintrc`配置文件如下:
+
+```javascript
+{
+  'attr-value-double-quotes': true
+}
+```
+
+---
+
+
+## CSS 书写规则
