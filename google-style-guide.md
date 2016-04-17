@@ -267,7 +267,7 @@ gulp.task('w3cjs', function() {
 <a href="recommendations/">All recommendations</a>
 ```
 
-### 多媒体 替代文本(`alt`)
+### 多媒体替代文本
 
 **为所有的多媒体内容提供一个替代文本**
 
