@@ -306,3 +306,85 @@ t=''`)。*
 
 在`HTML`中处理样式和行为的逻辑需要更高的维护成本，职责分离的一个重要目的便是提高
 代码的可维护性。
+
+```html
+<!-- 不推荐写法 -->
+<!DOCTYPE html>
+<title>HTML sucks</title>
+<link rel="stylesheet" href="base.css" media="screen">
+<link ref="stylesheet" href="grid.css" media="screen">
+<link rel="stylesheet" href="print.css" media="print">
+<h1 style="font-size: 1em;">HTML sucks</h1>
+<p>I've read about this on a few sites but now I'm sure:
+  <u>HTML is stupid!!</u>
+<center>I can't believe there's no way to control the styling of
+  my website without doing everything all over again!</center>
+
+<!-- 推荐写法 -->
+<!DOCTYPE html>
+<title>My first Css-only redesign</title>
+<link rel="stylesheet" href="default.css">
+<h1>My first Css-only redesign</h1>
+<p>I've read about this on a few sites but today I'm actucally
+  doing it: separating concerns and avoiding anythig in the HTML of
+  my website that is presentational.
+</p>
+```
+
+`.htmlhintrc`配置文件如下：
+
+```javascript
+{
+  // 禁止在HTML嵌入`javascript`或者`css`代码
+  'head-script-disabled': true,
+  'inline-style-disabled': true,
+  'inline-script-disabled': true
+}
+```
+
+### 字符实体
+
+**避免使用字符实体**
+
+如果只是为了表示(`UTF-8`)中非常用字符，例如：(`&mdash;`，`&rdquo;`，`&#x2663a;`。
+应该避免使用字符实体。)
+
+除了是`HTML`中的所必须的转义字符，(例如： `<`，`&`和空格)，可以使用字符实体。
+
+`.htmlhintrc`配置文件如下：
+
+```javascript
+{
+  // 提示需要转义的字符
+  'spec-char-escape': true
+}
+```
+
+### 资源类型属性
+
+**`javascript`和`css`资源的类型省略不写**
+
+样式表和脚本在`HTML5`标准中把`text/css`和`text/javascript`作为二者属性的默认值。
+这个规则在旧版本浏览器中也成立。
+
+```html
+<!-- 不推荐写法 -->
+<link rel="stylesheet" href="//www.google.com/css/maia.css" type="text/css">
+
+<!-- 推荐写法 -->
+<link rel="stylesheet" href="//www.google.com/css/maia.css">
+
+<!-- 不推荐写法 -->
+<script src="//www.google.com/js/gweb/analytics/autotrack.js"
+  type="text/javascript"></script>
+
+<!-- 推荐写法 -->
+<script src="//www.google.com/js/gweb/analytics/autotrack.js"></script>
+```
+---
+
+
+## HTML格式规则
+
+### 通用格式规则
+
