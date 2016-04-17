@@ -351,7 +351,18 @@ t=''`)。*
 
 除了是`HTML`中的所必须的转义字符，(例如： `<`，`&`和空格)，可以使用字符实体。
 
-`.htmlhintrc`配置文件如下：
+```html
+<!-- 不推荐写法 -->
+The currency symbol for the Euro is &ldquo;&eur;&rdquo;.
+
+<!-- 推荐写法 -->
+The currency symbol for the Euro is “€”.
+```
+
+> 从示例可以看出，使用字符实体在易读和易写方面表现都比较差。而且，语法上也容易出
+> 错。
+
+`.htmlhintrc`配置文件如：
 
 ```javascript
 {
@@ -359,6 +370,19 @@ t=''`)。*
   'spec-char-escape': true
 }
 ```
+
+### 省略可选标签(不推荐)
+
+```html
+<!-- 示例 -->
+<!DOCTYPE html>
+<title>Saving money, saving bytes</title>
+<p>Qed.
+```
+
+> 根据清晰原则，"清晰胜于技巧"。省略可选标签虽然是`HTML5`规范所允许的。权衡省略
+> 写法所带来的网络上的细微提升和由其造成可维护性降低的事实。这样的优化是不值得的
+> 。
 
 ### 资源类型属性
 
