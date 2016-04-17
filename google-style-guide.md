@@ -380,6 +380,9 @@ The currency symbol for the Euro is “€”.
 <p>Qed.
 ```
 
+**可选标签列表：** <https://www.w3.org/International/tutorials/tutorial-char-enc
+/>
+
 > 根据清晰原则，"清晰胜于技巧"。省略可选标签虽然是`HTML5`规范所允许的。权衡省略
 > 写法所带来的网络上的细微提升和由其造成可维护性降低的事实。这样的优化是不值得的
 > 。
