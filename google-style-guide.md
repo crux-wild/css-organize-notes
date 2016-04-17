@@ -78,6 +78,7 @@ color: #e5e5e5;
 
 **遵循上述书写规范可以通过`.editorconfig`配置文件和文本编辑插件，自动完成**
 
+`.editorconfig`配置文件如下：
 ```.editorconfig
 # http://editorconfig.org
 
@@ -183,7 +184,8 @@ HTML内容是否存在语法错误，是评价HTML代码质量的重要标注。
 
 **校验HTML的语法错误，可以通过`gulp-w3cjs`的方式自动化完成**
 
-```gulpfile.js
+gulpfile.js配置如下：
+```javascript
 var w3cjs = require('gulp-w3cjs');
 
 gulp.task('w3cjs', function() {
