@@ -47,13 +47,6 @@
 
 避免使用制表符(tab)或者制表符和空格混用方式作为缩进。
 
-### 字母大小写
-
-**统一使用小写**
-
-HTML和CSS的符号统一使用小写：包括HTML的标签和属性以及属性数值，CSS的选择符和属性
-性值。
-
 ```css
 <!-- 不推荐写法 -->
 <A HREF="/">HOME</A>
@@ -68,6 +61,13 @@ color: #E5E5E5;
 color: #e5e5e5;
 ```
 
+### 字母大小写
+
+**统一使用小写**
+
+HTML和CSS的符号统一使用小写：包括HTML的标签和属性以及属性数值，CSS的选择符和属性
+性值。
+
 ### 行末空格
 
 **去掉行末不用的空格**
@@ -76,9 +76,10 @@ color: #e5e5e5;
 
 ### EditorConfig
 
-**遵循上述书写规范可以通过`.editorconfig`配置文件和文本编辑插件，自动完成**
+**遵循上述通用书写规范可以通过`.editorconfig`配置文件和文本编辑插件，自动完成**
 
 `.editorconfig`配置文件如下：
+
 ```.editorconfig
 # http://editorconfig.org
 
@@ -94,11 +95,47 @@ max_line_length = 80
 trim_trailing_whitespace = true
 ```
 
-**EditorConfig 官网**  <http://editorconfig.org)>
+**EditorConfig 官网**  <http://editorconfig.org>
 
-###
+### gulp-htmlhint
+
+**与HTML内容有关的书写规范，可以使用`gulp-htmlhint`自动完成**
+
+`gulpfile.js`配置文件如下：
+
+```javascript
+var gulp = require('gulp');
+var htmlhint = require('gulp-htmlhint');
+
+var htmlWatcher;
+
+gulp.task('htmlhint', function() {
+  gulp.src('./src/*.html')
+    .pipe(htmlhint())
+    .pipe(htmlhint.reporter());
+});
+
+htmlWatcher = gulp.watch('src/*.html', ['htmlhint']);
+htmlWatcher.on('change', function(event) {
+  console.log('File' + event.path + ' was' + event.type + ', running tasks ' +
+    'htmlhint');
+});
+```
+
+`.htmlhintrc`配置文件如下：
+
+```javascript
+{
+  'tagname-lowercase': true,
+  'attr-lowercase': true
+}
+```
+
+
+**HTMLHint Github**  <https://github.com/yaniswang/HTMLHint>
 
 ---
+
 
 ## 通用Meta书写规则
 
@@ -185,6 +222,7 @@ HTML内容是否存在语法错误，是评价HTML代码质量的重要标注。
 **校验HTML的语法错误，可以通过`gulp-w3cjs`的方式自动化完成**
 
 gulpfile.js配置如下：
+
 ```javascript
 var w3cjs = require('gulp-w3cjs');
 
