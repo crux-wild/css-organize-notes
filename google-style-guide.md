@@ -12,19 +12,19 @@
 内嵌资源URL中省略不写的协议部分，浏览器自动根据当前HTML页面的URL推测出来。避免由
 于协议书写不一致，导致错误协议的资源被加载进来使用。
 
-> DRY(Don't Repeat Yourself)原则指出，任何知识点在系统内都应该有一个唯一，明确，
-> 权威的表述。
+> DRY(Don't Repeat Yourself)原则指出，任何知识点在系统内都应该有一个 *唯一* ，*明
+> 确*，*权威* 的表述。
 > 如果代码中含有重复数据是因为在两个不同的地方必须使用两个不同的表现形式，可以让
 > 其中一个由另一个生成。
-> 省略协议部分，将单个HTML页面所包含的所有内嵌资源的加载协议，统一为当前HTML页面
-> 的协议，并由其统一生成其内嵌资源的加载协议。
+> 省略协议部分，将当前`HTML`页面所包含的所有内嵌资源的加载协议的概念，统一为当前
+> HTML页面的协议，并由其统一生成其所包含内嵌资源的加载协议。
 
 ```css
 <!-- 不推荐写法 -->
 <script src="http://www.google.com/js/gweb/analytics/autotrack.js">
 
 <!-- 推荐写法 -->
-<script src="/js/gweb/analytics/autotrack.js">
+<script src="//www.google.com/js/gweb/analytics/autotrack.js">
 
 /* 推荐写法 */
 .example {
@@ -33,7 +33,7 @@
 
 /* 不推荐写法 */
 .example {
-  background: url(/images/example);
+  background: url(//www.google.com/images/example);
 }
 ```
 ---
@@ -65,8 +65,8 @@ color: #e5e5e5;
 
 **统一使用小写**
 
-HTML和CSS的符号统一使用小写：包括HTML的元素和属性以及属性数值，CSS的选择符和属性
-性值。
+HTML和CSS的符号统一使用小写：包括`HTML`的元素和属性以及属性数值，`CSS`的选择符和
+属性性值。
 
 ### 行末空格
 
@@ -131,7 +131,7 @@ htmlWatcher.on('change', function(event) {
 }
 ```
 
-> htmlhint有很多灵活的配置，上述例子主要实现统一使用小写的规范。
+> `htmlhint`有很多灵活的配置，上述例子主要实现统一使用小写的规范。
 
 **HTMLHint Github**  <https://github.com/yaniswang/HTMLHint>
 
@@ -144,11 +144,13 @@ htmlWatcher.on('change', function(event) {
 
 **使用UTF-8编码**
 
-确保你所使用的文本编辑器使用的是UTF-8编码，而不是单纯的字节组合。
+确保你所使用的文本编辑器使用的是`UTF-8`编码，而不是单纯的字节组合。
 通过`<metacharset="utf-8">`指定HTML所使用的编码。
 
 样式表可以通过`@charset "UTF-8"`或者是HTTP headers两种方式显式的指定编码。
 如果样式表中的内容没有超出ASNII编码的范围，不必显示指定样式表的编码。
+
+> 中文环境下，很多时候都会使用含有中文的内容，建议统一添加`@charset="utf-8"`。
 
 **编码和指定编码相关内容** <https://www.w3.org/International/tutorials/tutorial-
 char-enc/#quicksummary>
@@ -157,9 +159,14 @@ char-enc/#quicksummary>
 
 **在代码片段需要特殊说明的时候，使用注释**
 
-使用注释说明代码：代码的功能，代码所希望达到的目标，使用的解决方案以及其优势。
-(是否需要注释取决于项目需要，而不是注释每一行代码。应该视项目复杂性和代码修改频
-率而定)
+使用注释说明：
+
+  - 代码的功能
+  - 代码想要达到的效果
+  - 代码所使用的解决方案及其优势
+
+(是否需要注释取决于项目需要，而不是通篇都是注释。应该视 *项目复杂性* 和 *代码改
+动频率* 而定)
 
 ### 待完成项
 
@@ -201,10 +208,10 @@ TODO后面冒号是待完成的具体事项。例：`TODO: 待完成项`。
 HTML内容是否存在语法错误，是评价HTML代码质量的重要标注。语法正确代码内容可以避免
 一些意象不到错误。
 
-> HTML遵循的是"对输入宽容"的原则，即使接受的HTML文档不是很规范，HTML解析器也可以
-> 尽量理解其中的意义。但是，HTML的容错算法对绝大多数用户来说，是不透明的。带来问
-> 题是经过容错处理后的HTML解析结果很难被我们所理解。进行HTML内容校验正是为了避免
-> 类似问题的发生。
+> HTML遵循的是 *"对输入宽容"* 的原则，即使接受的HTML文档不是很规范，HTML解析器也
+> 可以尽量理解其中的意义。但是，HTML的容错算法对绝大多数用户来说，是* 不透明的*。
+> 带来问题是经过容错处理后的HTML解析结果很难被我们所理解。进行HTML内容校验正是为
+> 了避免类似问题的发生。
 
 ```html
 <!-- 不推荐写法 -->
@@ -238,5 +245,21 @@ gulp.task('w3cjs', function() {
 
 **HTML元素应该语义化**
 
-使用HTML标签(经常被错误的表述为标签)
+使用HTML标签(经常被错误的表述为标签)应该根据所包含内容的语义来选择。例如标题相关
+的内容使用标题元素(`h1`~`h6`)，文本段落相关的内容使用`p`，需要使用页面跳转功能使
+用`a`等等。
+
+这样做一个重要的目的便是提高代码的 *易读性*, *复用性*，*表现力*。
+
+```html
+<!-- 不推荐写法 -->
+<div onclick="goToRecommenddations();">All recommendations</div>
+
+<!-- 推荐写法 -->
+<a href="recommendations/">All recommendations</a>
+```
+
+### 多媒体 替代文本(`alt`)
+
+**为所有的多媒体内容提供一个替代文本**
 
