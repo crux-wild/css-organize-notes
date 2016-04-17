@@ -126,12 +126,11 @@ htmlWatcher.on('change', function(event) {
 
 ```javascript
 {
-  'tagname-lowercase': true,
-  'attr-lowercase': true
+  // 元素和属性使用统一使用小写
+  tagname-lowercase: true,
+  attr-lowercase: true,
 }
 ```
-
-> `htmlhint`有很多灵活的配置，上述例子主要实现统一使用小写的规范。
 
 **HTMLHint Github**  <https://github.com/yaniswang/HTMLHint>
 
@@ -199,6 +198,15 @@ TODO后面冒号是待完成的具体事项。例：`TODO: 待完成项`。
 
 常见的情况是，未闭合元素(`<br>`)在XHTML文档中是不被允许的。
 
+`.htmlhintrc`配置文件如下：
+
+```javascript
+{
+  // 使用html5风格的文档申明
+  doctype-html5: true
+}
+```
+
 ### HTML内容检验
 
 **HTML内容尽量合乎语法**
@@ -263,3 +271,38 @@ gulp.task('w3cjs', function() {
 
 **为所有的多媒体内容提供一个替代文本**
 
+诸如图片，视频，画布(`canvas`)，应该提供一个替代读写方案。如果是图片的话那就是一
+段有意义的替换文本(`alt`)，对于视频和音频来说的话就是一段说明字幕。
+
+提供替代内容，可以帮助 *脚本* 或者是 *搜索引擎* 更好去理解多媒体中的内容。
+
+*如果一些图片仅仅是作为装饰作用而没有具体内容，可以没有`alt`属性或者属性为空(`al
+t=''`)。*
+
+```html
+<!-- 不推荐写法 -->
+<img src="spreadsheet.png">
+
+<!-- 推荐写法 -->
+<img src="spreadsheet.png" alt="Spreadsheet screenshot.">
+```
+
+`.htmlhintrc`配置文件如下：
+
+```javascript
+{
+  'alt-require': true
+}
+```
+
+### 职责分离
+
+**`HTML`代码中避免与表现和行为相关的逻辑**
+
+前端中`html`负责 *结构*，`css`负责 *表现*，`javascript`负责 *行为*。
+
+确保`HTML`文档和模板中包含与结构相关`HTML`代码。将 *样式* 相关逻辑放到`css`中，
+*行为* 相关逻辑放到`javascript`中去。
+
+在`HTML`中处理 *样式* 和 *行为*的逻辑需要更高的维护成本，职责分离的一个重要目的
+便是提高代码的 *可维护性*。
