@@ -149,7 +149,7 @@ TODO后面冒号是待完成的具体事项。例：`TODO: 待完成项`。
 (推荐将HTML文档的`Content-Type`设置为`text/html`，而不是`application/xhtml+xml`
 。后者缺乏浏览器的支持，与HTML文档相比语法上更为僵化。)
 
-常见的情况是，未闭合标签(<br>)在XHTML文档中是不被允许的。
+常见的情况是，未闭合标签(`<br>`)在XHTML文档中是不被允许的。
 
 ### HTML内容检验
 
