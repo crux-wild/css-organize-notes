@@ -586,7 +586,7 @@ cssWatcher.on('change', function(event) {
 
 使用属性值的简写方式可以使代码更简洁，更易读。
 
-```css
+```
 /** 不推荐写法 */
 border-top-style: none;
 font-family: palatino, georgia, serif;
@@ -614,11 +614,9 @@ padding: 0 1em 2em;
 
 **省略数值为`0`属性值的单位**
 
-```css
-.demo {
-  margin: 0;
-  padding: 0;
-}
+```
+margin: 0;
+padding: 0;
 ```
 
 `.csslintrc`配置文件如下：
