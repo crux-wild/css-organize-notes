@@ -574,6 +574,7 @@ cssWatcher.on('change', function(event) {
 
 ```javascript
 {
+  // 除了分隔作用域，避免使用元素选择符
   'overqualified-elements': true
 }
 ```
@@ -606,6 +607,7 @@ padding: 0 1em 2em;
 `.csslintrc`配置文件如下：
 ```javascript
 {
+  // 属性值使用简写方式
   'shorthand': true
 }
 ```
@@ -623,8 +625,9 @@ padding: 0;
 
 ```javascript
 {
+  // 属性值为0的时候不写单位
   'zero-units': true
 }
 ```
 
-### 
+### 颜色的HEX表示法
