@@ -499,6 +499,8 @@ gulp.task('w3c-css', function() {
 });
 ```
 
+> 暂时没有发现一个支持`reporter`方式输出的插件。
+
 ### ID和CLASS的命名规则
 
 **使用表意和通用的`id`和`class`名称**
@@ -526,3 +528,101 @@ gulp.task('w3c-css', function() {
 .alt {}
 ```
 
+### 元素选择符
+
+**避免在使用标签选择符**
+
+除了需要使用标签选择符隔离作用域等情况，不要把元素选择与`id`选择符或者`class`选
+择符链接使用。
+
+```css
+/** 不推荐 */
+ul #exmaple {}
+div .error {}
+
+/** 推荐写法 */
+#example {}
+.error {}
+```
+
+### gulp-csslint
+
+**`CSS`相关的书写规范校验可以通过，`gulp-csslint`自动化的完成**
+
+`gulpfile.js`配置文件如下：
+
+```javascript
+var gulp = require('gulp');
+var csslint = require('gulp-csslint');
+
+var cssWatcher;
+
+gulp.task('csslint', function() {
+  gulp.src('./src/*.css')
+    .pipe(csslint())
+    .pipe(csslint.reporter());
+});
+
+cssWatcher = gulp.watch('src/*.css', ['csslint']);
+cssWatcher.on('change', function(event) {
+  console.log('File' + event.path + ' was' + event.type + ', running tasks ' +
+    'csslint');
+});
+```
+
+`.csslintrc`配置文件如下：
+
+```javascript
+{
+  'overqualified-elements': true
+}
+```
+
+### 简写属性值
+
+**尽可能使用简写属性值**
+
+推荐使用`css`提供的类似`font`属性的简写方式，即使可能只需要设置单一属性值。
+
+使用属性值的简写方式可以使代码更简洁，更易读。
+
+```css
+/** 不推荐写法 */
+border-top-style: none;
+font-family: palatino, georgia, serif;
+font-size: 100%;
+line-height: 1.6;
+padding-bottom: 2em;
+padding-left: 1em;
+padding-right: 1em;
+padding-top: 0;
+
+/** 推荐写法 */
+border-top: 0;
+font: 100%/1.6 palatino, georgia, serif;
+padding: 0 1em 2em;
+```
+
+`.csslintrc`配置文件如下：
+```javascript
+{
+  'shorthand': true
+}
+```
+
+### 数值0
+
+**省略数值为`0`属性值的单位**
+
+```css
+margin: 0;
+padding: 0;
+```
+
+`.csslintrc`配置文件如下：
+
+```javascript
+{
+  'zero-units': true
+}
+```
