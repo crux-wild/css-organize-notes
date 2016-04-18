@@ -232,6 +232,7 @@ HTML内容是否存在语法错误，是评价HTML代码质量的重要标注。
 <title>Test</title>
 <article>This is only a test.</article>
 ```
+**W3C HTML校验地址** <https://validator.w3.org/nu/#textarea>
 
 ### gulp-w3cjs
 
@@ -474,8 +475,11 @@ The currency symbol for the Euro is “€”.
 
 **推荐对`CSS`进行内容校验**
 
-除了解决`css`当中的特定bugs或者需要使用特殊`css`语法，否则`css`内容应该合乎语法
-。
+剔除为了解决特定bugs和必须使用特殊语法两种情况。其余`css`内容都应该确保其能通过
+语法校验。
 
-如果使用了错误的`css`语法，代码将会被解析器忽略。合乎语法的`css`能够确保代码如预
-期工作，也是衡量代码质量的重要标准。
+能够通过语法校验是衡量`css`代码质量的重要标注。语法错误的`css`一般不会产生任何样
+式效果并被解析器移除，语法正确能够确保定义样式生效。
+
+**W3C CSS校验地址** <http://jigsaw.w3.org/css-validator/>
+
