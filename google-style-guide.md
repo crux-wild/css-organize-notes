@@ -483,3 +483,46 @@ The currency symbol for the Euro is “€”.
 
 **W3C CSS校验地址** <http://jigsaw.w3.org/css-validator/>
 
+### gulp-w3c-css
+
+**校验CSS内容的语法错误可以使用`gulp-w3c-css`自动化的完成**
+
+`gulpfile.js`的配置文件如下：
+
+```javascript
+var w3c_css = require('gulp-w3c-css');
+
+gulp.task('w3c-css', function() {
+  gulp.src('src/*.css')
+    .pipe(w3c_css())
+    .pipe(gulp.dest('./build'));
+});
+```
+
+### ID和CLASS的命名规则
+
+**使用表意和通用的`id`和`class`名称**
+
+表意命名更能反映`id`和`class`的用途，优点是易于理解，缺点是不易于复用。
+
+通用命名通常没有特殊的含义，可以被一组相似的元素所复用。通用命名多数时候不会单独
+出现，而是组合使用补充说明该元素的通用特征。
+
+```css
+/** 不推荐写法：不表意 */
+#yee-1901
+
+/** 不推荐写法：复用性差 */
+.button-green {}
+.clear {}
+
+/** 推荐写法：表意清晰 */
+#galler {}
+#login {}
+.video {}
+
+/** 推荐写法：命名通用 */
+.aux {}
+.alt {}
+```
+
