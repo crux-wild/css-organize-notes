@@ -473,7 +473,7 @@ The currency symbol for the Euro is “€”.
 
 ### CSS内容校验
 
-**推荐对`CSS`进行内容校验**
+**对`CSS`进行内容校验**
 
 剔除为了解决特定bugs和必须使用特殊语法两种情况。其余`css`内容都应该确保其能通过
 语法校验。
