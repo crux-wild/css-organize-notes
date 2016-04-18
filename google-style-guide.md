@@ -615,8 +615,10 @@ padding: 0 1em 2em;
 **省略数值为`0`属性值的单位**
 
 ```css
-margin: 0;
-padding: 0;
+.demo {
+  margin: 0;
+  padding: 0;
+}
 ```
 
 `.csslintrc`配置文件如下：
@@ -626,3 +628,5 @@ padding: 0;
   'zero-units': true
 }
 ```
+
+### 
