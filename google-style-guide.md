@@ -415,8 +415,8 @@ The currency symbol for the Euro is “€”.
 
 ### 通用格式规则
 
-**每个独立的`blockquote`，`ul`，`table`都应该使用空行作为分割。每个子元素相对其父
-亲都应该有缩进**
+**独立`blockquote`，`ul`，`table`元素之间使用空行作为分隔。子元素相对其父元素应
+该有两个空格的缩进**
 
 ```html
 <blockquote>
