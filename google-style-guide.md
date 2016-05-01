@@ -649,11 +649,61 @@ color: #ebc;
 >
 > 如果需要兼容旧版本浏览器(IE8或者更早)，需要优先保证功能的实现。
 
-`.csslintrc`配置文件如下；
+
+`.csslintrc`配置文件如下：
 
 ```javascript
 {
   // css3环境下，优先使用更具表现力的新语法
   'fallback-colors': true
+}
+```
+
+### 前缀
+
+**使用应用唯一标识作为选择符前缀**
+
+在大型项目中，如果代码可能会被其他项目或者外部站点所使用。使用简短且唯一的标识符
+(命名空间)加上一个`-`的方式作为选择符前缀。
+
+使用命名空间可以避免命名冲突以及提供代码的可维护性。
+
+```css
+.adw-help {} /* AdWords */
+#maia-note {} /* Maia */
+```
+
+### ID和CLASS的分隔符
+
+**使用`-`(中划线)作为ID和CLASS的连字符**
+
+使用`-`(中划线)作为连字符可以提高命名的易读性和可拓展性。
+
+```css
+/** 不推荐写法: "demo"和"image"之间没有分隔符 */
+.demoimage {}
+
+/** 不推荐写法: 使用下划线替代中划线 */
+.error_status {}
+
+/** 推荐写法 */
+#video-id {}
+.ads-sample {}
+```
+
+### Hacks
+
+**避免使用浏览器特征检测或者"CSS hacks"方式-优先尝试其他可行途径**
+
+当样式在不同的浏览器展现不一致的时候，倾向使用浏览器特征检测和"CSS hacks"的解决
+方案。为了保证代码的可维护性，"CSS hacks"方案都应该作为最后考虑的解决方案。
+
+`.csslintrc`配置文件如下：
+
+```javascript
+{
+  // 避免使用IE特有`*`和`_`的两种"CSS hacks"方式
+  start-property-hack: true,
+  underscore-property-hack: true
 }
 ```
