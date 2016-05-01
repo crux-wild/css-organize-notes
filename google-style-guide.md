@@ -898,6 +898,23 @@ html {
 }
 ```
 
+### gulp-cssbeautify
+
+`css`的书写规范可以通过`gulp-cssbeautify`的方式自动化的完成
+
+`gulpfile.js`配置文件如下:
+
+```javascript
+var gulp = require('gulp');
+var cssbeautify = require('gulp-cssbeautify');
+
+gulp.task('cssbeautify', function() {
+  gulp.src('./src/*.css')
+    .pipe(cssbeautify())
+    .pipe(gulp.dest('./src/*.css'));
+});
+```
+
 ---
 
 ## CSS注释规范
