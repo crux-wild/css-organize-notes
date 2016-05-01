@@ -750,6 +750,8 @@ gulp.task('css-declaration-sorter', function() {
 });
 ```
 
+**css-declaration-sorter Github** <https://github.com/Siilwyn/css-declaration-sorter>
+
 ### autoprefixer
 
 **`css`的厂商前缀可以通过`autoprefixer`的方式自动化的完成**
@@ -768,6 +770,7 @@ gulp.task('autoprefixer', function() {
 });
 ```
 
+**autoprefixer Github** <https://github.com/postcss/autoprefixer>
 
 ### 代码块缩进
 
@@ -892,6 +895,7 @@ gulp.task('cssbeautify', function() {
     .pipe(gulp.dest('./src/*.css'));
 });
 ```
+**gulp-cssbeautify Github** <https://github.com/jonkemp/gulp-cssbeautify>
 
 ### 引号
 
