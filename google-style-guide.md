@@ -693,16 +693,16 @@ color: #ebc;
 
 ### Hacks
 
-**避免使用浏览器特征检测或者"CSS hacks"方式-优先尝试其他可行途径**
+**避免使用浏览器特征检测或者`CSS hacks`方式-优先尝试其他可行途径**
 
-当样式在不同的浏览器展现不一致的时候，倾向使用浏览器特征检测和"CSS hacks"的解决
+当样式在不同的浏览器展现不一致的时候，倾向使用浏览器特征检测和`CSS hacks`的解决
 方案。为了保证代码的可维护性，"CSS hacks"方案都应该作为最后考虑的解决方案。
 
 `.csslintrc`配置文件如下：
 
 ```javascript
 {
-  // 避免使用IE特有`*`和`_`的两种"CSS hacks"方式
+  // 避免使用IE特有`*`和`_`的两种`CSS hacks`方式
   start-property-hack: true,
   underscore-property-hack: true
 }
