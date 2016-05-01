@@ -732,6 +732,43 @@ text-align: center;
 text-indent: 2em;
 ```
 
+### css-declaration-sorter
+
+**属性的书写顺序可以通过`css-declaration-sorter`的方式自动化的完成**
+
+`gulpfile.js`配置文件如下:
+
+```javascript
+var gulp = require('gulp');
+var gulpPostcss = require('gulp-postcss');
+var cssdeclsort = requiire('css-declaration-sorter');
+
+gulp.task('css-declaration-sorter', function() {
+  gulp.src('./src/*css')
+    .pipe(gulpPostcss([cssdeclsort({order: 'alphabetically'})]))
+    .pipe(gulp.dest('./dest/'));
+});
+```
+
+### autoprefixer
+
+**属性的厂商前缀可以通过`autoprefixer`的方式自动化的完成**
+
+`gulpfile.js`配置文件如下:
+
+```javascript
+var gulp = require('gulp');
+var gulpPostcss = require('gulp-postcss');
+var autoprefixer = require('autoprefixer');
+
+gulp.task('autoprefixer', function() {
+  gulp.src('./src/*css')
+    .pipe(gulpPostcss([autoprefixer({browers: ['last 2 versions']})]))
+    .pipe(gulp.dest('./dest/'));
+});
+```
+
+
 ### 代码块缩进
 
 **缩进所有代码块**
