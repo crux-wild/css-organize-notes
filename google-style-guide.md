@@ -661,12 +661,12 @@ color: #ebc;
 
 ### 前缀
 
-**使用应用唯一标识作为选择符前缀**
+**使用应用标识作为选择符前缀**
 
-在大型项目中，如果代码可能会被其他项目或者外部站点所使用。使用简短且唯一的标识符
-(命名空间)加上一个`-`的方式作为选择符前缀。
+在大型项目中，如果代码可能会被其他项目或者外部站点所使用。使用简短且唯一的应用标
+识(命名空间)作为选择符前缀。
 
-使用命名空间可以避免命名冲突以及提供代码的可维护性。
+使用命名空间可以避免命名冲突以及提高代码的可维护性。
 
 ```css
 .adw-help {} /* AdWords */
@@ -696,8 +696,7 @@ color: #ebc;
 **避免使用浏览器特征检测或者`CSS hacks`方式**
 
 当样式在不同的浏览器呈现不一致的时候，我们倾向于使用浏览器特征检测和`CSS hacks`
-的解决方案。但是，为了保证代码的可维护性，`CSS hacks`应该总是作为最后的解决方案
-被考虑。
+的解决方案。但是，为了保证代码的可维护性，`CSS hacks`应该最后被考虑。
 
 `.csslintrc`配置文件如下：
 
@@ -707,6 +706,187 @@ color: #ebc;
   start-property-hack: true,
   underscore-property-hack: true
 }
+```
+
+---
+
+
+## CSS书写规范
+
+### 书写顺序
+
+**使用字母顺序**
+
+使用字母顺序作为书写顺序，因为字母顺序更容易记忆和保持。
+
+含有厂商前缀属性(例: `-moz-border-radius`)的顺序在规范属性(例: `border-radius`)
+的前面。如果存在含有多个厂商前缀的属性时候，它们的书写顺序应该遵循字母顺序(例：
+`-moz`前缀写在`-webkit`前缀前面)。
+
+```
+background: fuchsia;
+border: 1px solid;
+-moz-border-radius: 4px;
+-webit-border-radius: 4px;
+border-radius: 4px;
+color: black;
+text-align: center;
+text-indent: 2em;
+```
+
+### 代码块缩进
+
+**缩进所有代码块**
+
+所有代码块和属性集都采用缩进，可以放映代码的层次关系和提高代码可读性。
+
+```css
+@media screen, projection {
+  html {
+    background: #fff;
+    color: #444;
+  }
+}
+```
+
+### 样式声明结束
+
+**样式声明结束时使用`;`(分号)作为结束标识**
+
+样式声明结束时使用`;`(分号)作为标识。提高代码一致性和拓展性。
+
+```css
+/** 不推荐写法 */
+.test {
+  display: block;
+  height: 100px;
+}
+
+/** 推荐写法 */
+.test {
+  display: block;
+  height: 100px;
+}
+```
+
+### 属性名
+
+**属性名的冒号后面保留一个空格**
+
+在属性的后面保持保留一个空格，可以提高代码的一致性。
+
+```css
+/** 不推荐写法 */
+h3 {
+  font-weight:bold;
+}
+
+/** 推荐写法 */
+h3 {
+  font-weight: bold;
+}
+```
+
+### 声明块
+
+**在选择符和声明块之间使用一个空格作为分隔**
+
+```css
+/** 不推荐写法：没有空格 */
+#video {
+  margin-top: 1em;
+}
+
+/* 不推荐写法: 使用不必要的回车 */
+#video
+{
+  margin-top: 1em;
+}
+
+/** 推荐写法 */
+#video {
+  margin-top: 1em;
+}
+```
+
+### 多个选择符
+
+**多个选择符使用空行作为分隔**
+
+```css
+/** 不推荐写法 */
+a:focus, a:active {
+  position: relative; top: 1px;
+}
+
+/** 推荐写法 */
+h1,
+h2,
+h3 {
+  font-weight: normal;
+  line-height: 1.2;
+}
+```
+
+### 多个规则
+
+**多个规则使用空行作为分隔**
+
+```css
+html {
+  background: #fff;
+}
+
+body {
+  margin: auto;
+  width: 50%;
+}
+```
+
+### CSS引号
+
+**属性选择器和属性值使用单引号**
+
+属性选择器和属性值使用`'`(单引号)代替`"`(双引号)。URL属性(url())中省略引号。
+
+```css
+/** 不推荐写法 */
+@import url("//www.google.com/css/maia.css");
+
+html {
+  font-family: "open sans", arial, sans-serif;
+}
+
+/** 推荐写法 */
+@import url(//www.google.com/css/maia.css);
+
+html {
+  font-family: 'open sans', arial, sans-serif;
+}
+```
+
+---
+
+## CSS注释规范
+
+### 代码块注释
+
+**是用块注释显示划分一组代码块**
+
+通过块注释将一组功能相似的代码放到相同的地方。不同的代码块使用空行作为分隔。
+
+```css
+/** Header */
+
+#adw-header {}
+
+/** Footer */
+
+#adw-footer {}
+
+/* Gallery */
+
+.adw-gallery {}
 ```
 
 ---
