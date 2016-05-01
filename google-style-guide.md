@@ -734,7 +734,7 @@ text-indent: 2em;
 
 ### css-declaration-sorter
 
-**属性的书写顺序可以通过`css-declaration-sorter`的方式自动化的完成**
+**`css`的属性顺序可以通过`css-declaration-sorter`的方式自动化的完成**
 
 `gulpfile.js`配置文件如下:
 
@@ -752,7 +752,7 @@ gulp.task('css-declaration-sorter', function() {
 
 ### autoprefixer
 
-**属性的厂商前缀可以通过`autoprefixer`的方式自动化的完成**
+**`css`的厂商前缀可以通过`autoprefixer`的方式自动化的完成**
 
 `gulpfile.js`配置文件如下:
 
