@@ -484,23 +484,24 @@ The currency symbol for the Euro is “€”.
 
 **W3C CSS校验地址** <http://jigsaw.w3.org/css-validator/>
 
-### gulp-w3c-css
+### gulp-css-validator
 
-**校验CSS内容的语法错误可以使用`gulp-w3c-css`自动化的完成**
+**校验CSS内容的语法错误可以使用`gulp-css-validator`自动化的完成**
 
 `gulpfile.js`的配置文件如下：
 
 ```javascript
-var w3c_css = require('gulp-w3c-css');
+var gulp = require('gulp');
+var css_validator = require('gulp-css-validator');
 
-gulp.task('w3c-css', function() {
+gulp.task('css_validator', function() {
   gulp.src('src/*.css')
-    .pipe(w3c_css())
-    .pipe(gulp.dest('./build'));
+    .pipe(css_validator());
 });
 ```
 
-> 暂时没有发现一个支持`reporter`方式输出的插件。
+**gulp-css-validator Github** <https://github.com/mgmeyers/gulp-css-validator>
+
 
 ### ID和CLASS的命名规则
 
